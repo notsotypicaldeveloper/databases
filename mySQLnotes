@@ -1,0 +1,39 @@
+Database is collection of data in a format that can be easily accessed.
+
+A software application used to manage our DB is called DBMS(Database managment system)
+
+user ------sql-----> | DBMS | -----> DB
+
+relational -> data stored in table.
+MySQL, SQLServer, Oracle, PostgreSQL
+
+Non-relational -> do not stored in table
+mongoDB
+
+
+Structured Query Language
+Used to perform CRUD opreations.
+--------------------------------------------
+
+CREATE DATABASE <db_name>;
+
+CREATE DATABASE temp1;
+CREATE DATABASE temp2;
+
+DROP DATABASE temp1;
+CREATE DATABASE temp2;
+
+CREATE DATABASE college;
+
+USE college;
+
+CREATE TABLE student (
+	id INT PRIMARY KEY,
+    name varchar(50),
+    age INT NOT NULL
+);
+
+
+
+
+
