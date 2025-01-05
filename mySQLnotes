@@ -33,7 +33,165 @@ CREATE TABLE student (
     age INT NOT NULL
 );
 
+select * from student;
 
+CHAR (0-255)
+VARCHAR(0-255) -> Will not waste exta memory 
+BLOB(0-65535)
+INT 
+TINYINT 
+FLOAT (with precison to 23 digits)
+DOUBLE (with precison to 24 to 53 digits)
+BOOLEAN (0 or 1)
+DATE (YYYY-MM-DD)
+YEAR (in 4 digits format ranging from 1901 to 2155)
+
+TINYINT UNSIGNED (0 to 255) -> age, salary 
+TINYINT(-128 to 127)
+
+CREATE DATABASE IF NOT EXISTS db_name;
+
+CREATE DATABASE IF NOT EXISTS college;
+
+
+DROP DATABASE db_name;
+DROP DATABASE IF EXISTS temp1;
+
+SHOW DATABASES;
+
+SHOW TABLES;
+
+
+DROP TABLE student;
+
+
+SELECT * FROM table_name;
+
+SELECT * FROM student;
+
+INSERT INTO table_name (colname);
+
+INSERT INTO table_name(colname1, colname2) VALUES (col1_v1, col2_v2), (col1_v2, col2_v2);
+
+
+INSERT INTO student (rollNo, name) VALUES (101, "karan"), (102, "arjun"),(103, "ram");
+
+INSERT INTO student VALUES (104, "shayam");
+
+
+
+(Q1)
+
+CREATE DATABASE xyz_company;
+USE xyz_company;
+
+
+Step1: 
+create a table inside this DB to store employee info(id, name, salary);
+id -> INT PRIMARY KEY, name -> VARCHAR(100), salary -> INT/FLOAT -> for simplicity, we are using INT.
+
+CREATE TABLE EMPLOYEE(
+    id INT PRIMARY KEY,
+    name VARCHAR(100),
+    salary INT
+);
+
+Primary Key 
+    - is a columns(or set of columns) in a table that uniquely.
+    - only one 1 primary key and it should be NOT null.
+
+
+Foreign Key:
+    A foreign key is a column(or set of columns) in a table that refers to the primary key.
+    There can be multiple FKs.
+    FKs can have duplicate and null values.
+
+Constraints:
+    NOT NULL -> columns cannot have a null value ->  col1 INT NOT NULL
+    UNIQUE -> all values in column are different -> col2 INT UNIQUE
+    PRIMARY KEY -> makes a column unique and not null but only for one 
+
+id INT PRIMARY KEY 
+
+CREATE TABLE temp(
+    id INT NOT NULL,
+    PRIMARY KEY (id)
+);
+
+
+CREATE TABLE temp1 (
+    id INT UNIQUE
+);
+
+INSERT INTO temp1 VALUES(101);
+INSERT INTO temp1 VALUES(102);
+
+
+----
+Combination unique for primary key 
+
+CREATE TABLE temp1  (
+    id INT, 
+    name VARCHAR(50),
+    age INT,
+    city VARCHAR(20),
+    PRIMARY KEY(id, name)
+);
+
+Foreign Key 
+
+CREATE TABLE temp (
+    cust_id int, 
+    FOREIGN KEY(cust_id) references customer(id)
+);
+
+DEFAULT set the  default value of a column.
+    salary INT DEFAULT 25000
+
+CREATE TABLE emp (
+	id INT,
+    salary INT DEFAULT 25000
+);
+
+INSERT INTO emp(id)  VALUES(101); 
+
+select * from emp;
+
+---------------------
+Constraints 
+
+CHECK -> it can limit the values allowed in a column.
+
+
+CREATE TABLE city (
+    id INT PRIMARY KEY,
+    city VARCHAR(50),
+    age INT, 
+    CONSTRAINT age_check CHECK (age >= 18 AND city="Delhi")
+);
+
+CREATE TABLE newTab(
+    age INT CHECK (age >= 18)
+);
+
+-------------
+CREATE TABLE student (
+    rollNo INT PRIMARY KEY,
+    name VARCHAR(50),
+    marks INT NOT NULL,
+    grade VARCHAR(1),
+    city VARCHAR(20)
+);
+
+INSERT INTO student 
+(rollNo, name, marks, grade, city) 
+value 
+(101, "anil", 78, "C", "Pune"),
+(102, "bhumika", 93, "A", "Mumbai"),
+(103, "chetan", 85, "B", "Pune"),
+(104, "dhruv", 96, "A", "Delhi"),
+(105, "emanuel", 12, "F", "Delhi"),
+(106, "farah", 82, "B", "Delhi");
 
 
 
